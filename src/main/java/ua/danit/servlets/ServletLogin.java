@@ -1,3 +1,4 @@
+/*
 package ua.danit.servlets;
 
 import ua.danit.model.Client;
@@ -120,3 +121,4 @@ public class ClientServlet extends HttpServlet
 }
 
 
+*/

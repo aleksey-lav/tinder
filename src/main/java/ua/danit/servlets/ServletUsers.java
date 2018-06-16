@@ -4,6 +4,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import ua.danit.model.Users;
 import ua.danit.model.UsersLst;
 
 
@@ -15,15 +16,17 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ServletUsers extends HttpServlet {
 
-    UsersLst usersLst = new UsersLst();
+    private final Set<Users> likedSet;
+    UsersLst userList = new UsersLst();
     int index = 0;
+
+    public ServletUsers(Set<Users> likedSet) {
+        this.likedSet = likedSet;
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
@@ -35,8 +38,8 @@ public class ServletUsers extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
         model.put("user", "Alexei");
 
-        model.put("name", usersLst.get().get(index).getName());
-        model.put("link", usersLst.get().get(index).getUrl());
+        model.put("name", userList.get().get(index).getName());
+        model.put("link", userList.get().get(index).getUrl());
         Template template = cfg.getTemplate("template1.ftlh");
         Writer out = resp.getWriter();
 
@@ -52,7 +55,7 @@ public class ServletUsers extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if (req.getParameter("answer") != null && req.getParameter("answer").equals("yes") || req.getParameter("answer").equals("no")) {
-            if (index < usersLst.get().size() - 1) {
+            if (index < userList.get().size() - 1) {
                 index++;
             } else index = 0;
         }
@@ -61,6 +64,9 @@ public class ServletUsers extends HttpServlet {
                 index--;
             } else index = usersLst.get().size() - 1;
         }*/
+        if (req.getParameter("answer") != null && req.getParameter("answer").equals("yes")) {
+            likedSet.add(userList.get().get(index));
+        }
         doGet(req, resp);
     }
 }
