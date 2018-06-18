@@ -1,6 +1,7 @@
 package ua.danit.servlets;
 
 
+
 import org.apache.commons.io.FileUtils;
 
 import javax.servlet.ServletException;
@@ -21,5 +22,6 @@ public class StaticServlet extends HttpServlet {
         ServletOutputStream outputStream = resp.getOutputStream();
         outputStream.write(buffer);
         outputStream.close();
+        //new File("./java/main/ua/danit/servlets/StaticServlet", req.getPathInfo());
     }
 }

@@ -1,3 +1,4 @@
+/*
 package ua.danit.dao;
 
 import ua.danit.model.Client;
@@ -7,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ClientDAO extends AbstractDAO<Client>
+public class ClientDAO implements Database <Client>
 {
 	@Override public void save(Client client)
 	{
@@ -99,3 +100,4 @@ public class ClientDAO extends AbstractDAO<Client>
 		}
 	}
 }
+*/
