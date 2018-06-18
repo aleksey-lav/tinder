@@ -9,7 +9,7 @@ import ua.danit.model.Client;
 import ua.danit.model.Users;
 import ua.danit.servlets.ServletMessages;
 import ua.danit.servlets.ServletUsers;
-import ua.danit.servlets.ServletsLinked;
+import ua.danit.servlets.ServletsLiked;
 import ua.danit.servlets.StaticServlet;
 
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class AppTinder {
             new Server(8080){{
                 setHandler(new ServletContextHandler() {{
                                addServlet(new ServletHolder(new ServletUsers(likedSet)) ,"/users");
-                               addServlet(new ServletHolder(new StaticServlet()),"/staticServlet/*");
+                               addServlet(new ServletHolder(new StaticServlet()),"/assets/*");
                               /* addServlet(new ServletHolder(new ServletsLinked(likedSet)) ,"/liked");
                                addServlet(new ServletHolder(new ServletMessages()) ,"/messages");*/
                            }}
@@ -37,9 +37,9 @@ public static class Main2 {
     public static void main(String[] args) {
         ClientDAO clientDAO = new ClientDAO();
         Client client = new Client();
-        client.setLogin("dracula");
-        client.setPassword("123");
-        client.setName("Alexei");
+        client.setLogin("hrobak");
+        client.setName("hr");
+        client.setPassword("12");
         clientDAO.save(client);
 
     }

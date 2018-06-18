@@ -17,8 +17,8 @@ public class ConnectionToDB
 	private static final String USER_PASS = "bArceloNa";*/
 
 	private static final String DB_URL = "jdbc:postgresql://localhost:5432/fs5";
-	private static final String USERNAME = "postgres";
-	private static final String USER_PASS = "pilot";
+	private static final String USERNAME = "fs5_user";
+	private static final String USER_PASS = "bArceloNa";
 
 
 	protected static Connection getConnection(){

@@ -30,7 +30,7 @@ public class ServletUsers extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
-        cfg.setDirectoryForTemplateLoading(new File("./src/main/java/ua/danit/templates"));
+        cfg.setDirectoryForTemplateLoading(new File("./src/main/resources/static/html"));
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setLogTemplateExceptions(false);
@@ -40,7 +40,7 @@ public class ServletUsers extends HttpServlet {
 
         model.put("name", userList.get().get(index).getName());
         model.put("link", userList.get().get(index).getUrl());
-        Template template = cfg.getTemplate("template1.ftlh");
+        Template template = cfg.getTemplate("like-page.html");
         Writer out = resp.getWriter();
 
 
